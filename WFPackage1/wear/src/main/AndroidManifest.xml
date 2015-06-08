@@ -1,0 +1,42 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="production.bcf.com.wfpackage1">
+    <uses-feature android:name="android.hardware.type.watch" />
+    <application android:allowBackup="true" android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher" android:theme="@android:style/Theme.DeviceDefault">
+
+
+        <service
+            android:name=".WFPg1TheBall"
+            android:allowEmbedded="true"
+            android:label="The ball"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:taskAffinity="">
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/watch_face" />
+            <meta-data
+                android:name="com.google.android.wearable.watchface.preview"
+                android:resource="@drawable/buddawatchface_overview" />
+            <meta-data
+                android:name="com.google.android.wearable.watchface.preview_circular"
+                android:resource="@drawable/buddawatchface_overview" />
+            <meta-data
+                android:name="com.google.android.wearable.watchface.companionConfigurationAction"
+                android:value="production.bcf.com.wfpackage1.THE_BALL_CONFIGURATION" />
+
+            <intent-filter>
+
+                <action android:name="android.service.wallpaper.WallpaperService" />
+
+                <category android:name="com.google.android.wearable.watchface.category.WATCH_FACE" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".service.ListenerService">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
